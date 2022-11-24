@@ -34,12 +34,13 @@ body {
 }
 
 .top2 {
+    height: 95px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 6px;
-    margin-left: 50px;
-    margin-right: 45px;
+    padding: 45px;
+    border-radius: 5px;
+    background-color: #1d8fa9;
 }
 
 .imageProfileBtn {
