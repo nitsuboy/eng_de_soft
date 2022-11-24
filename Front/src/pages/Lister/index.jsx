@@ -4,18 +4,19 @@ import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export const Lister = () => {
 
     const [equipaments, setEquipaments] = useState([]);
-        useEffect(() => {
+    useEffect(() => {
         getEquipment();
     }, []);
 
     const getEquipment = () => {
         axios
-        .get('http://localhost:8080/servicos')
-        .then((res) => setEquipaments(res.data))
+            .get('http://localhost:8080/servicos')
+            .then((res) => setEquipaments(res.data))
         console.log(equipaments)
     }
 
@@ -24,7 +25,7 @@ export const Lister = () => {
             <div className="container">
                 <div className="top2">
                     <div className="top1">
-                        <input  type="text" placeholder='Exemplo' />
+                        <input type="text" placeholder='Exemplo' />
                         <button>
                             <FiSearch size={35} color='#fff' />
                         </button>
@@ -32,7 +33,9 @@ export const Lister = () => {
 
                     <div className="imageProfileBtn">
                         <button>
-                            <FiUser size={35} color='#333333' />
+                            <Link to='/profile'>
+                                <FiUser size={35} color='#333333' />
+                            </Link>
                         </button>
                     </div>
                 </div>
