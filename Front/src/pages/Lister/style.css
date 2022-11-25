@@ -73,23 +73,36 @@ body {
     padding: 6px;
 }
 
+.top1 input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
 .top1 button {
     height: 100%;
     width: 50px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    transition: .4s ease; 
     background-color: #4465FE;
 }
 
+.top1 button:hover {
+    background-color: #fff;
+}
 .card {
     display: flex;
     border-radius: 14px;
     width: 90%;
     background-color: #ffffff;
     margin-top: 15px;
-
+    transition: 0.4s ease;
     cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.03);
 }
 
 

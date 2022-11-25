@@ -27,7 +27,7 @@ export const Lister = () => {
                     <div className="top1">
                         <input type="text" placeholder='Exemplo' />
                         <button>
-                            <FiSearch size={35} color='#fff' />
+                            <FiSearch size={35} color='#24cffa' />
                         </button>
                     </div>
 

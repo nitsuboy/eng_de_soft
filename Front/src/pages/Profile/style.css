@@ -32,7 +32,12 @@
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    transition: .4s ease; 
     background-color: #4465FE;
+}
+
+.top button:hover {
+    background-color: #fff;
 }
 
 .middle {
