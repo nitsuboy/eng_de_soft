@@ -3,6 +3,7 @@ import { Lister } from "../pages/Lister"
 import { Login } from "../pages/Login"
 import { Profile } from "../pages/Profile"
 import { Register } from "../pages/Register"
+import { Contract } from "../pages/Contract"
 
 export const AppRouter = () => {
     return(
@@ -12,7 +13,7 @@ export const AppRouter = () => {
                 <Route path="/register" element={<Register/>} />
                 <Route path="/profile" element={<Profile/>} />
                 <Route path="/lister" element={<Lister/>} />
-                <Route path="/contract" element={<Contract/>} />
+                <Route path="/Contract" element={<Contract/>} />
             </Routes>
         </Router>
 
