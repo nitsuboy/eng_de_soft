@@ -1,15 +1,28 @@
 import { Link } from "react-router-dom";
-
+import axios from 'axios'
 import { useState } from "react";
 import { LayoutComponents } from "../../components/LayoutComponents";
 
 export const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [dados, setDados] = useState([]);
+
+  const login = () => {
+    axios
+      .get('http://localhost:8080/usuario/search?email=' + email)
+      .then((res) => {
+        setDados(res)
+        if (dados.status == 200) {
+          localStorage.id = dados.data.id
+          location.replace("lister")
+        }
+      })
+  }
 
   return (
     <LayoutComponents>
-      <form className="login-form">
+      <div className="login-form">
         <span className="login-form-title">Login</span>
 
         <div className="wrap-input">
@@ -25,7 +38,7 @@ export const Login = () => {
         </div>
 
         <div className="container-login-form-btn">
-          <button className="login-form-btn">Login</button>
+          <button className="login-form-btn" onClick={login}>Login</button>
         </div>
 
         <div className="text-center">
@@ -35,10 +48,10 @@ export const Login = () => {
           <Link to="/register" className="txt2">
             Criar conta
           </Link>
-          
+
         </div>
 
-      </form>
+      </div>
     </LayoutComponents>
   );
 }

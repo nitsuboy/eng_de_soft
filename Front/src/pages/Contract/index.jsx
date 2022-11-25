@@ -1,9 +1,29 @@
 import { FiArrowLeft, FiUser } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useState } from 'react'
+import { useEffect } from 'react'
+import axios from 'axios'
 
 import '../Contract/style.css'
 
 export const Contract = () => {
+
+    const [servico, setServico] = useState([]);
+    useEffect(() => {
+        getServicos();
+    }, []);
+
+    const [feedbacks, setFeedbacks] = useState([]);
+
+    const getServicos = () => {
+        axios
+            .get('http://localhost:8080/servico/' + localStorage.Sid)
+            .then((res) => {
+                setServico(res.data)
+                setFeedbacks(res.data.feedbacks)
+            })
+    }
+
     return (
         <div className="containerMain">
             <div className="container">
@@ -31,8 +51,11 @@ export const Contract = () => {
                     </div>
 
                     <div className="pricediv">
+                    <h1>
+                            {servico.nome}
+                        </h1>
                         <h1>
-                            R$20.00
+                            R${servico.preco}
                         </h1>
                         <button className="login-form-btn">
                             Contratar
@@ -47,7 +70,7 @@ export const Contract = () => {
                     </div>
 
                     <div className="serviceDescription">
-                        <h4>Meu nome é Yoshikage Kira. Tenho 33 anos. Minha casa fica na parte nordeste de Morioh, onde todas as casas estão</h4>
+                        <h4>{servico.descricao}</h4>
                     </div>
 
                     <div className="pontuation">
@@ -61,35 +84,19 @@ export const Contract = () => {
                 </div>
 
                 <div className="feedback">
-                    <div className="feedbackCard">
-                        <div className="feedbackCard-Top">
-                            <h2>Nota:</h2>
-                            <h4>3.5 / 5</h4>
-                        </div>
-                        <div className="feedbackCard-content">
-                            <h4>Simplismente trabalho fenomenal </h4>
-                        </div>
-                    </div>
 
-                    <div className="feedbackCard">
+                    {feedbacks.map((feedback,key) => (
+                        <div className="feedbackCard" key={key}>
                         <div className="feedbackCard-Top">
                             <h2>Nota:</h2>
-                            <h4>3.5 / 5</h4>
+                            <h4>{feedback.rate} / 5</h4>
                         </div>
                         <div className="feedbackCard-content">
-                            <h4>Muito ruim</h4>
+                            <h4>{feedback.desc}</h4>
                         </div>
                     </div>
-
-                    <div className="feedbackCard">
-                        <div className="feedbackCard-Top">
-                            <h2>Nota:</h2>
-                            <h4>3.5 / 5</h4>
-                        </div>
-                        <div className="feedbackCard-content">
-                            <h4>Muito ruim</h4>
-                        </div>
-                    </div>
+                    ))}
+                    
                 </div>
 
             </div>
