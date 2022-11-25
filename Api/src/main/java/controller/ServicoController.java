@@ -37,6 +37,22 @@ public class ServicoController {
         	return "falta de dados";    		
             
         });
+        
+        // POST adicionar feedback
+        post("/servico/:id", (request, response) -> {
+        	if(	!request.queryParams("rate").isBlank() && !request.queryParams("descricao").isBlank() &&
+            		!request.queryParams("user").isBlank())
+            	{
+            		String rate = request.queryParams("rate");
+                    String descricao = request.queryParams("descricao");
+                    String user= request.queryParams("user");
+                    servicoService.addFeedback(request.params(":id"), rate, descricao, user);
+                    response.status(201);
+                    return "Feedback criado";
+            	}
+            	response.status(500);
+            	return "falta de dados";    
+        });
 
         // GET Servico por id
         get("/servico/:id", (request, response) -> {

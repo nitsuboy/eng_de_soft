@@ -3,6 +3,7 @@ package service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import entity.Usuario;
@@ -30,6 +31,17 @@ public final class UsuarioService extends Service {
     
     public Usuario findById(String id) {
         return users.get(id);
+    }
+    
+    public Usuario findByEmail(String Email) {
+    	
+    	for (Entry<String, Usuario> entry : users.entrySet()) {
+            if (entry.getValue().getEmail().equals(Email)) {
+                return users.get(entry.getKey());
+            }
+        }
+    	return null;
+        
     }
 
     public Usuario add(String name, String senha, String CPF, String email) {

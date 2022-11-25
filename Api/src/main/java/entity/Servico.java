@@ -1,7 +1,8 @@
 package entity;
 
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Servico implements Serializable{
 	
@@ -9,7 +10,7 @@ public class Servico implements Serializable{
 	private String nome;
 	private String descricao;
 	private float preco;
-	private HashMap<Integer,String> feedback;
+	private List<Feedback> feedbacks;
 	
 	public String getNome() {
 		return nome;
@@ -35,16 +36,16 @@ public class Servico implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public HashMap<Integer,String> getFeedback() {
-		return feedback;
+	public List<Feedback> getFeedback() {
+		return feedbacks;
 	}
-	public void setFeedback(int avaliacao,String comentario) {
-		this.feedback.put(null, comentario);
+	public void addFeedback(String rate,String comentario,String id2) {
+		this.feedbacks.add(new Feedback(comentario, rate, id2));
 	}
 	@Override
 	public String toString() {
 		return "Servico [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco + ", feedback="
-				+ feedback + "]";
+				+ feedbacks + "]";
 	}
 	public Servico(int id, String nome, String descricao, float preco) {
 		super();
@@ -52,7 +53,7 @@ public class Servico implements Serializable{
 		this.nome = nome;
 		this.descricao = descricao;
 		this.preco = preco;
-		this.feedback = new HashMap<Integer, String>();
+		this.feedbacks = new ArrayList<Feedback>();
 	}
 
 	

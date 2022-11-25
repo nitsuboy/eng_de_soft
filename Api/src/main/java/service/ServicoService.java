@@ -39,6 +39,11 @@ public final class ServicoService extends Service {
         saveData(users,"/servicos.top");
         return currentId;
     }
+    public void addFeedback(String servico,String rate, String descricao, String id) {
+        Servico user = users.get(servico);
+        user.addFeedback(rate, descricao, id);
+        saveData(users,"/servicos.top");
+    }
 
     public Servico update(String id, String name, String senha) {
 

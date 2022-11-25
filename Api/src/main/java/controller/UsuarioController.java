@@ -36,6 +36,14 @@ public class UsuarioController {
         	return "falta de dados";    		
             
         });
+        
+        // GET usuario por email
+        get("/usuario/search", (request, response) -> {
+        	        	
+        	Usuario usuario = usuarioService.findByEmail(request.queryParams("email"));
+        	
+        	return gson.toJson(usuario);
+        });
 
         // GET usuario por id
         get("/usuario/:id", (request, response) -> {
