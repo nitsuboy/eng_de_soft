@@ -10,6 +10,7 @@ public class Servico implements Serializable{
 	private String nome;
 	private String descricao;
 	private float preco;
+	private int user_id;
 	private List<Feedback> feedbacks;
 	
 	public String getNome() {
@@ -42,18 +43,27 @@ public class Servico implements Serializable{
 	public void addFeedback(String rate,String comentario,String id2) {
 		this.feedbacks.add(new Feedback(comentario, rate, id2));
 	}
+	public void resetFeedback() {
+		this.feedbacks.clear();;
+	}
 	@Override
 	public String toString() {
 		return "Servico [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco + ", feedback="
 				+ feedbacks + "]";
 	}
-	public Servico(int id, String nome, String descricao, float preco) {
+	public Servico(int user_id,int id, String nome, String descricao, float preco) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.preco = preco;
 		this.feedbacks = new ArrayList<Feedback>();
+	}
+	public int getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 
 	

@@ -33,11 +33,13 @@ public final class UsuarioService extends Service {
         return users.get(id);
     }
     
-    public Usuario findByEmail(String Email) {
+    public Usuario login(String Email,String Senha) {
     	
     	for (Entry<String, Usuario> entry : users.entrySet()) {
             if (entry.getValue().getEmail().equals(Email)) {
-                return users.get(entry.getKey());
+            	if(users.get(entry.getKey()).getSenha().equals(Senha)) {
+            		return users.get(entry.getKey());
+            	}
             }
         }
     	return null;

@@ -32,17 +32,23 @@ public final class ServicoService extends Service {
         return users.get(id);
     }
 
-    public int add(String name, String descricao, float preco) {
+    public int add(String user_id,String name, String descricao, float preco) {
         int currentId = count.incrementAndGet();
-        Servico user = new Servico(currentId, name, descricao, preco);
+        Servico user = new Servico(Integer.valueOf(user_id),currentId, name, descricao, preco);
         users.put(String.valueOf(currentId), user);
         saveData(users,"/servicos.top");
         return currentId;
     }
+    
     public void addFeedback(String servico,String rate, String descricao, String id) {
         Servico user = users.get(servico);
         user.addFeedback(rate, descricao, id);
         saveData(users,"/servicos.top");
+    }
+    
+    public void resetFeedback(String servico) {
+    	Servico user = users.get(servico);
+    	user.resetFeedback();
     }
 
     public Servico update(String id, String name, String senha) {

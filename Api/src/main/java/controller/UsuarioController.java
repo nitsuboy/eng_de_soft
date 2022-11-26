@@ -38,9 +38,9 @@ public class UsuarioController {
         });
         
         // GET usuario por email
-        get("/usuario/search", (request, response) -> {
+        get("/usuario/login", (request, response) -> {
         	        	
-        	Usuario usuario = usuarioService.findByEmail(request.queryParams("email"));
+        	Usuario usuario = usuarioService.login(request.queryParams("email"),request.queryParams("senha"));
         	
         	return gson.toJson(usuario);
         });

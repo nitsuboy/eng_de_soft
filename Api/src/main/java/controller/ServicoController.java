@@ -29,7 +29,7 @@ public class ServicoController {
         		String nome = request.queryParams("nome");
                 String descricao = request.queryParams("descricao");
                 float preco = Float.parseFloat(request.queryParams("preco"));
-                prestadorService.addServico(request.params(":id"), servicoService.add(nome, descricao, preco));
+                prestadorService.addServico(request.params(":id"), servicoService.add(request.params(":id"),nome, descricao, preco));
                 response.status(201);
                 return "Servico criado";
         	}
@@ -96,6 +96,19 @@ public class ServicoController {
             Servico servico = servicoService.findById(id);
             if (servico != null) {
                 servicoService.delete(id);
+                return "servico with id " + id + " is deleted!";
+            } else {
+                response.status(404);
+                return "Servico não encontrado";
+            }
+        });
+        
+        // DELETE deletar Feedbacks
+        delete("/servico/:id/feedbacks", (request, response) -> {
+            String id = request.params(":id");
+            Servico servico = servicoService.findById(id);
+            if (servico != null) {
+                servico.resetFeedback();
                 return "servico with id " + id + " is deleted!";
             } else {
                 response.status(404);
