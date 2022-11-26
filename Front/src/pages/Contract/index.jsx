@@ -17,7 +17,7 @@ export const Contract = () => {
 
     const getServicos = () => {
         axios
-            .get('http://localhost:8080/servico/' + localStorage.Sid)
+            .get('http://26.196.39.244:8080/servico/' + localStorage.Sid)
             .then((res) => {
                 setServico(res.data)
                 setFeedbacks(res.data.feedbacks)
@@ -51,7 +51,7 @@ export const Contract = () => {
                     </div>
 
                     <div className="pricediv">
-                    <h1>
+                        <h1>
                             {servico.nome}
                         </h1>
                         <h1>
@@ -84,19 +84,21 @@ export const Contract = () => {
                 </div>
 
                 <div className="feedback">
-
-                    {feedbacks.map((feedback,key) => (
-                        <div className="feedbackCard" key={key}>
-                        <div className="feedbackCard-Top">
-                            <h2>Nota:</h2>
-                            <h4>{feedback.rate} / 5</h4>
-                        </div>
-                        <div className="feedbackCard-content">
-                            <h4>{feedback.desc}</h4>
-                        </div>
+                    <div className="feedback-content">
+                        {feedbacks.map((feedback, key) => (
+                            <div className="feedbackCard" key={key}>
+                                <div className="feedbackCard-Top">
+                                    <h2>Nota:</h2>
+                                    <h4>{feedback.rate} / 5</h4>
+                                </div>
+                                <div className="feedbackCard-content">
+                                    <p>{feedback.desc}</p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                    ))}
-                    
+
+
                 </div>
 
             </div>

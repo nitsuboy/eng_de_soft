@@ -15,13 +15,13 @@ export const Lister = () => {
 
     const getServicos = () => {
         axios
-            .get('http://localhost:8080/servicos')
+            .get('http://26.196.39.244:8080/servicos')
             .then((res) => setServicos(res.data))
     }
 
     const contract = (dados) => {
         localStorage.Sid = dados.id
-        location.replace("contract")
+        window.location.replace("contract")
     }
 
         return (

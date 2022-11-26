@@ -15,7 +15,7 @@ export const Login = () => {
         setDados(res)
         if (dados.status == 200) {
           localStorage.id = dados.data.id
-          location.replace("lister")
+          window.location.replace("lister")
         }
       })
   }
