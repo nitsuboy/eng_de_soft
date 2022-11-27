@@ -34,7 +34,7 @@ public final class ServicoService extends Service {
 
     public int add(String user_id,String name, String descricao, float preco) {
         int currentId = count.incrementAndGet();
-        Servico user = new Servico(Integer.valueOf(user_id),currentId, name, descricao, preco);
+        Servico user = new Servico(user_id,currentId, name, descricao, preco);
         users.put(String.valueOf(currentId), user);
         saveData(users,"/servicos.top");
         return currentId;

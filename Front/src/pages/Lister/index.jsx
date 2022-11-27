@@ -15,7 +15,7 @@ export const Lister = () => {
 
     const getServicos = () => {
         axios
-            .get('http://26.196.39.244:8080/servicos')
+            .get('http://localhost:8080/servicos')
             .then((res) => setServicos(res.data))
     }
 

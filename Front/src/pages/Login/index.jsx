@@ -10,7 +10,7 @@ export const Login = () => {
 
   const login = () => {
     axios
-      .get('http://localhost:8080/usuario/search?email=' + email)
+      .get('http://localhost:8080/usuario/login?email=' + email + '&senha=' + password)
       .then((res) => {
         setDados(res)
         if (dados.status == 200) {
